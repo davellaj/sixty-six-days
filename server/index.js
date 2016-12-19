@@ -1,8 +1,10 @@
 import 'babel-polyfill';
 import express from 'express';
+import mongoose from 'mongoose';
 
 const HOST = process.env.HOST;
 const PORT = process.env.PORT || 8080;
+const DATABASE_URL = 'mongodb://accountability:accountability@ds139428.mlab.com:39428/accountability';
 
 console.log(`Server running in ${process.env.NODE_ENV} mode`);
 
@@ -10,19 +12,27 @@ const app = express();
 
 app.use(express.static(process.env.CLIENT_PATH));
 
+app.get('/api/home', (request, response) => {
+
+  return response.status(200).json(dummy);
+})
+
 function runServer() {
     return new Promise((resolve, reject) => {
-        app.listen(PORT, HOST, (err) => {
-            if (err) {
-                console.error(err);
-                reject(err);
+      mongoose.connect(DATABASE_URL, err => {
+          if (err) {
+          return reject(err);
+   }
+      app.listen(PORT, HOST, (err) => {
+          if (err) {
+              console.error(err);
+              reject(err);
             }
-
-            const host = HOST || 'localhost';
-            console.log(`Listening on ${host}:${PORT}`);
+          const host = HOST || 'localhost';
+          console.log(`Listening on ${host}:${PORT}`);
         });
     });
-}
+})}
 
 if (require.main === module) {
     runServer();
