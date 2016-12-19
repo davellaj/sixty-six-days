@@ -1,6 +1,7 @@
 import 'babel-polyfill';
 import express from 'express';
 import mongoose from 'mongoose';
+import Goals from '../models/goals'
 
 const HOST = process.env.HOST;
 const PORT = process.env.PORT || 8080;
@@ -12,9 +13,16 @@ const app = express();
 
 app.use(express.static(process.env.CLIENT_PATH));
 
-app.get('/api/home', (request, response) => {
 
-  return response.status(200).json(dummy);
+app.get('/api/home', (request, response) => {
+  Goals.find({})
+  .then((goals) => {
+    return response.status(200).json(goals);
+  })
+  .catch(err => {
+    console.error(err);
+    response.status(500).json({message: 'internal server error'})
+  })
 })
 
 function runServer() {
