@@ -1,8 +1,9 @@
-// export const ADD_GOAL = 'ADD_GOAL';
-// export const addGoal = goal => ({
-//   type: ADD_GOAL,
-//   goal
-// })
+import 'isomorphic-fetch'
+
+export const FETCH_GOALS_REQUEST = 'FETCH_GOALS_REQUEST';
+export const fetchGoalsRequest = () => ({
+  type: FETCH_GOALS_REQUEST
+})
 
 export const FETCH_GOALS_SUCCESS = 'FETCH_GOALS_SUCCESS';
 export const fetchGoalsSuccess = goal => ({
@@ -11,15 +12,15 @@ export const fetchGoalsSuccess = goal => ({
 })
 
 export const FETCH_GOALS_ERROR = 'FETCH_GOALS_ERROR';
-export const fetchGoalsError = (goal, error) => ({
+export const fetchGoalsError = error => ({
   type: FETCH_GOALS_ERROR,
-  goal,
   error
 })
 
 export const fetchGoals = goals => dispatch => {
-  const url = `http://localhost:8080/home`;
+  const url = `http://localhost:8080/api/home`
   return fetch(url)
+  .then(dispatch(fetchGoalsRequest()))
   .then(response => {
     if (!response.ok) {
       const error = new Error(response.statusText)
@@ -29,10 +30,10 @@ export const fetchGoals = goals => dispatch => {
     return response;
   })
   .then(response => response.json())
-  .then(data =>
-  dispatch(fetchGoalsSuccess(goal))
+  .then(goalData =>
+  dispatch(fetchGoalsSuccess(goalData))
   )
   .catch(error =>
-    dispatch(fetchGoalsError(goal, error))
+    dispatch(fetchGoalsError(error))
   );
 };
