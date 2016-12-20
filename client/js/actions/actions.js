@@ -17,7 +17,7 @@ export const fetchGoalsError = error => ({
   error
 })
 
-export const fetchGoals = goals => dispatch => {
+export const fetchGoals = () => dispatch => {
   const url = `http://localhost:8080/api/home`
   return fetch(url)
   .then(dispatch(fetchGoalsRequest()))
