@@ -12,6 +12,7 @@ export class Goals extends React.Component {
     this.props.dispatch(actions.fetchGoals())
   }
 
+
   sendUserGoal(event){
     event.preventDefault();
     const userGoal = this.textInput.value;
@@ -23,7 +24,8 @@ export class Goals extends React.Component {
   render() {
     // console.log(this.props.userGoals);
     const goals = this.props.userGoals.map((goal, idx) => {
-      return <li key={idx}>{goal.goal}</li>
+      return <li key={idx}>{goal.goal}
+        <button onClick={() => {this.props.dispatch(actions.deleteGoal(goal._id))}}>Delete</button></li>
     })
     // console.log(this.props)
     return (

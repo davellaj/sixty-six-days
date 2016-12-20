@@ -39,7 +39,13 @@ export const fetchGoals = () => dispatch => {
   );
 };
 
-
+//when click button it sends id to this action
+export const deleteGoal = (id) => dispatch => {
+  return fetch(url + "/" + id, {
+    method: 'DELETE'
+  })
+  .then(() => dispatch(fetchGoals()))
+}
 
 export const addGoal = (goal) => dispatch => {
   return fetch(url, {
