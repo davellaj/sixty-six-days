@@ -67,18 +67,27 @@ app.post('/api/home', function(req, res) {
 })
 
 app.put('/api/home/:id', (req, res) => {
-  console.log(req.params)
-  console.log(req.body)
+  console.log("params", req.params)
+  console.log("body", req.body)
 
   Goals.findOneAndUpdate({
     _id: req.params.id},
-    {$set:{goal: req.body.goal}}, {upsert: true}, function(){
-       console.log('updated')
+    {$set:{goal: req.body.goal}}, {upsert: true}, function(error){
+      //  console.log('updated')
+      if (error) {
+        console.error(error);
+        res.sendStatus(400);
+      }
+      res.sendStatus(201);
      }
   );
 });
 
+app.delete('/api/home/:id', (req, res) => {
+  console.log (req.params)
+  // Goals.delete(req.params.id)
 
+})
 
 
 
