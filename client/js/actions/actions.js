@@ -1,5 +1,7 @@
 import 'isomorphic-fetch'
 
+const url = `http://localhost:8080/api/home`
+
 export const FETCH_GOALS_REQUEST = 'FETCH_GOALS_REQUEST';
 export const fetchGoalsRequest = () => ({
   type: FETCH_GOALS_REQUEST
@@ -18,7 +20,6 @@ export const fetchGoalsError = error => ({
 })
 
 export const fetchGoals = () => dispatch => {
-  const url = `http://localhost:8080/api/home`
   return fetch(url)
   .then(dispatch(fetchGoalsRequest()))
   .then(response => {
@@ -37,3 +38,25 @@ export const fetchGoals = () => dispatch => {
     dispatch(fetchGoalsError(error))
   );
 };
+
+//when click button it sends id to this action
+export const deleteGoal = (id) => dispatch => {
+  return fetch(url + "/" + id, {
+    method: 'DELETE'
+  })
+  .then(() => dispatch(fetchGoals()))
+}
+
+export const addGoal = (goal) => dispatch => {
+  return fetch(url, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      goal
+    })
+  })
+  .then(response => response.json())
+  .then(goal => dispatch(fetchGoalsSuccess(goal)))
+}

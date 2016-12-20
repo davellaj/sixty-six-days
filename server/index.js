@@ -90,7 +90,7 @@ app.delete('/api/home/:id', (req, res) => {
         console.error(error);
         res.sendStatus(400);
       }
-    res.status(204).json({message: 'Successfully deleted.'});
+    res.sendStatus(204);
     }
   );
 })
