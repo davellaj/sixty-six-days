@@ -6,18 +6,25 @@ export class Goals extends React.Component {
   componentDidMount() {
     this.props.dispatch(actions.fetchGoals())
   }
+
   render() {
+    console.log(this.props.userGoals);
+    const goals = this.props.userGoals.map((goal, idx) => {
+      return <li key={idx}>{goal.goal}</li>
+    })
     // console.log(this.props)
     return (
       <div>
-        <h1>{this.props.individualGoal}</h1>
+        <ul>
+          {goals}
+        </ul>
       </div>
     )
   }
 }
 
 const mapStateToProps = (state, props) => ({
-  individualGoal: state.goal.goal
+  userGoals: state.goals
 })
 
 export default connect(mapStateToProps)(Goals)

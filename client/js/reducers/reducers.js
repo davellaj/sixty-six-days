@@ -1,7 +1,8 @@
 import * as actions from '../actions/actions';
 
 const initialState = {
-  goal: "",
+  goals: [],
+  // users: [],
   loading: false,
   error: null
 };
@@ -15,7 +16,7 @@ export const GoalsReducer = (state=initialState, action) => {
   }
   if (action.type === actions.FETCH_GOALS_SUCCESS) {
     return {...state,
-      goal: action.goals[0],
+      goals: action.goals,
       loading: false,
       error: null
     }
