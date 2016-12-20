@@ -67,12 +67,11 @@ app.post('/api/home', function(req, res) {
 })
 
 app.put('/api/home/:id', (req, res) => {
-  console.log("params", req.params)
-  console.log("body", req.body)
-
-  Goals.findOneAndUpdate({
-    _id: req.params.id},
-    {$set:{goal: req.body.goal}}, {upsert: true}, function(error){
+  Goals.findOneAndUpdate(
+    {_id: req.params.id},
+    {$set:{goal: req.body.goal}},
+    {upsert: true},
+    function(error){
       //  console.log('updated')
       if (error) {
         console.error(error);
@@ -84,21 +83,18 @@ app.put('/api/home/:id', (req, res) => {
 });
 
 app.delete('/api/home/:id', (req, res) => {
-  console.log (req.params)
-  // Goals.delete(req.params.id)
-
+  Goals.findByIdAndRemove(
+    {_id: req.params.id},
+    function(error){
+      if (error) {
+        console.error(error);
+        res.sendStatus(400);
+      }
+    res.status(204).json({message: 'Successfully deleted.'});
+    }
+  );
 })
 
-
-
-
-
-//   if (!request.body.goal) {
-//     return resolve.sendStatus(400);
-//   }
-//   else {
-//     return resolve.sendStatus(201).json(goal);
-//   }
 
 if (require.main === module) {
     runServer();
