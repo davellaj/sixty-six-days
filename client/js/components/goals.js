@@ -16,7 +16,7 @@ export class Goals extends React.Component {
     event.preventDefault();
     const userGoal = this.textInput.value;
     console.log('fired off sendUserGoal event', userGoal)
-    //dispatch action here to post to database and add to list of goals
+    this.props.dispatch(actions.addGoal(userGoal))
     this.textInput.value='';
   }
 
