@@ -1,28 +1,100 @@
 import 'babel-polyfill';
 import express from 'express';
+import mongoose from 'mongoose';
+import Goals from '../models/goals';
+import bodyParser from 'body-parser';
 
 const HOST = process.env.HOST;
 const PORT = process.env.PORT || 8080;
+const DATABASE_URL = 'mongodb://accountability:accountability@ds139428.mlab.com:39428/accountability';
+const jsonParser = bodyParser.json();
 
 console.log(`Server running in ${process.env.NODE_ENV} mode`);
 
 const app = express();
 
 app.use(express.static(process.env.CLIENT_PATH));
+app.use(jsonParser);
+
+
+app.get('/api/home', (request, response) => {
+  Goals.find({})
+  .then((goals) => {
+    return response.status(200).json(goals);
+  })
+  .catch(err => {
+    console.error(err);
+    response.status(500).json({message: 'internal server error'})
+  })
+})
 
 function runServer() {
     return new Promise((resolve, reject) => {
-        app.listen(PORT, HOST, (err) => {
-            if (err) {
-                console.error(err);
-                reject(err);
+      mongoose.connect(DATABASE_URL, err => {
+          if (err) {
+          return reject(err);
+   }
+      app.listen(PORT, HOST, (err) => {
+          if (err) {
+              console.error(err);
+              reject(err);
             }
-
-            const host = HOST || 'localhost';
-            console.log(`Listening on ${host}:${PORT}`);
+          const host = HOST || 'localhost';
+          console.log(`Listening on ${host}:${PORT}`);
         });
     });
-}
+})}
+
+app.post('/api/home', function(req, res) {
+// in future will have to find individual user and then add goal
+  let goal = new Goals()
+  console.log(req.body);
+      goal.goal = req.body.goal
+      goal.user = req.body.user
+
+      goal.save((err, goal) => {
+          if(err){
+              res.send(err)
+          }
+
+          Goals.find({}, (err, goal) => {
+              if(err){
+                  res.send(err)
+              }
+              res.json(goal)
+          })
+      })
+})
+
+app.put('/api/home/:id', (req, res) => {
+  Goals.findOneAndUpdate(
+    {_id: req.params.id},
+    {$set:{goal: req.body.goal}},
+    {upsert: true},
+    function(error){
+      //  console.log('updated')
+      if (error) {
+        console.error(error);
+        res.sendStatus(400);
+      }
+      res.sendStatus(201);
+     }
+  );
+});
+
+app.delete('/api/home/:id', (req, res) => {
+  Goals.findByIdAndRemove(
+    {_id: req.params.id},
+    function(error){
+      if (error) {
+        console.error(error);
+        res.sendStatus(400);
+      }
+    res.sendStatus(204);
+    }
+  );
+})
+
 
 if (require.main === module) {
     runServer();
