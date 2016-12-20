@@ -15,7 +15,7 @@ export const GoalsReducer = (state=initialState, action) => {
   }
   if (action.type === actions.FETCH_GOALS_SUCCESS) {
     return {...state,
-      goal: action.goal,
+      goal: action.goals[0],
       loading: false,
       error: null
     }

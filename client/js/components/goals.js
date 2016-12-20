@@ -10,14 +10,14 @@ export class Goals extends React.Component {
     // console.log(this.props)
     return (
       <div>
-        <h1>{this.props.state.goal}</h1>
+        <h1>{this.props.individualGoal}</h1>
       </div>
     )
   }
 }
 
 const mapStateToProps = (state, props) => ({
-  state
+  individualGoal: state.goal.goal
 })
 
 export default connect(mapStateToProps)(Goals)

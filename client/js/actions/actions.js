@@ -6,9 +6,9 @@ export const fetchGoalsRequest = () => ({
 })
 
 export const FETCH_GOALS_SUCCESS = 'FETCH_GOALS_SUCCESS';
-export const fetchGoalsSuccess = goal => ({
+export const fetchGoalsSuccess = goals => ({
   type: FETCH_GOALS_SUCCESS,
-  goal
+  goals
 })
 
 export const FETCH_GOALS_ERROR = 'FETCH_GOALS_ERROR';

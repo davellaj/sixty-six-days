@@ -20,7 +20,7 @@ app.use(jsonParser);
 app.get('/api/home', (request, response) => {
   Goals.find({})
   .then((goals) => {
-    return response.status(200).json(goals[0].goal);
+    return response.status(200).json(goals);
   })
   .catch(err => {
     console.error(err);
@@ -46,7 +46,7 @@ function runServer() {
 })}
 
 app.post('/api/home', function(req, res) {
-
+// in future will have to find individual user and then add goal
   let goal = new Goals()
   console.log(req.body);
       goal.goal = req.body.goal
@@ -64,6 +64,24 @@ app.post('/api/home', function(req, res) {
               res.json(goal)
           })
       })
+})
+
+app.put('/api/home/:id', (req, res) => {
+  console.log(req.params)
+  console.log(req.body)
+
+  Goals.findOneAndUpdate({
+    _id: req.params.id},
+    {$set:{goal: req.body.goal}}, {upsert: true}, function(){
+       console.log('updated')
+     }
+  );
+});
+
+
+
+
+
 
 
 //   if (!request.body.goal) {
@@ -72,7 +90,6 @@ app.post('/api/home', function(req, res) {
 //   else {
 //     return resolve.sendStatus(201).json(goal);
 //   }
-})
 
 if (require.main === module) {
     runServer();
