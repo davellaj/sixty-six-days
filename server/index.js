@@ -17,7 +17,7 @@ app.use(express.static(process.env.CLIENT_PATH));
 app.get('/api/home', (request, response) => {
   Goals.find({})
   .then((goals) => {
-    return response.status(200).json(goals);
+    return response.status(200).json(goals[0].goal);
   })
   .catch(err => {
     console.error(err);
