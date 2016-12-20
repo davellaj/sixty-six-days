@@ -3,8 +3,21 @@ import {connect} from 'react-redux'
 import * as actions from '../actions/actions'
 
 export class Goals extends React.Component {
+  constructor(props){
+    super(props);
+    this.sendUserGoal = this.sendUserGoal.bind(this);
+  }
+
   componentDidMount() {
     this.props.dispatch(actions.fetchGoals())
+  }
+
+  sendUserGoal(event){
+    event.preventDefault();
+    const userGoal = this.textInput.value;
+    console.log('fired off sendUserGoal event', userGoal)
+    //dispatch action here to post to database and add to list of goals
+    this.textInput.value='';
   }
 
   render() {
@@ -15,6 +28,12 @@ export class Goals extends React.Component {
     // console.log(this.props)
     return (
       <div>
+        <form onSubmit={this.sendUserGoal}>
+          <label>New Goal</label>
+          <br></br>
+          <input type="text" ref={input => this.textInput = input} placeholder="type your goal"/>
+          <button type="submit">Submit</button>
+        </form>
         <ul>
           {goals}
         </ul>
