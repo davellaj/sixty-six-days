@@ -8,7 +8,7 @@ export class Goals extends React.Component {
   }
 
   render() {
-    console.log(this.props.userGoals);
+    // console.log(this.props.userGoals);
     const goals = this.props.userGoals.map((goal, idx) => {
       return <li key={idx}>{goal.goal}</li>
     })
