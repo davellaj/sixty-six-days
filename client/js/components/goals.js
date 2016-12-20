@@ -7,7 +7,7 @@ export class Goals extends React.Component {
     this.props.dispatch(actions.fetchGoals())
   }
   render() {
-    console.log(this.props)
+    // console.log(this.props)
     return (
       <div>
         <h1>{this.props.state.goal}</h1>

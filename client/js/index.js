@@ -6,7 +6,7 @@ import store from './store'
 import Goals from './components/goals';
 
 console.log(`Client running in ${process.env.NODE_ENV} mode`);
-console.log(store.getState());
+// console.log(store.getState());
 
 document.addEventListener('DOMContentLoaded', () => {
   return ReactDOM.render(

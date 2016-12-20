@@ -7,7 +7,7 @@ const initialState = {
 };
 
 export const GoalsReducer = (state=initialState, action) => {
-  console.log(state);
+  // console.log(state);
   if (action.type === actions.FETCH_GOALS_REQUEST) {
     return {...state,
       loading: true
