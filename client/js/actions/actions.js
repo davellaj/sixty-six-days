@@ -47,6 +47,13 @@ export const deleteGoal = (id) => dispatch => {
   .then(() => dispatch(fetchGoals()))
 }
 
+export const updateGoal = (id) => dispatch => {
+  return fetch(url + "/" + id, {
+    method: 'PUT'
+  })
+  .then(() => dispatch(fetchGoals()))
+}
+
 export const addGoal = (goal) => dispatch => {
   return fetch(url, {
     method: 'POST',

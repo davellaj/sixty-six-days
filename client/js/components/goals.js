@@ -25,7 +25,8 @@ export class Goals extends React.Component {
     // console.log(this.props.userGoals);
     const goals = this.props.userGoals.map((goal, idx) => {
       return <li key={idx}>{goal.goal}
-        <button onClick={() => {this.props.dispatch(actions.deleteGoal(goal._id))}}>Delete</button></li>
+        <button onClick={() => {this.props.dispatch(actions.deleteGoal(goal._id))}}>Delete</button>
+        </li>
     })
     // console.log(this.props)
     return (
