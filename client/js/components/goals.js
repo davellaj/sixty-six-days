@@ -6,7 +6,7 @@ export class Goals extends React.Component {
   constructor(props){
     super(props);
     this.sendUserGoal = this.sendUserGoal.bind(this);
-    this.saveUserGoal = this.saveUserGoal.bind(this);
+    // this.saveUserGoal = this.saveUserGoal.bind(this);
   }
 
   componentDidMount() {
@@ -22,19 +22,22 @@ export class Goals extends React.Component {
     this.textInput.value='';
   }
 
-  saveUserGoal(event){
-    const newUserGoal = event.target.innerText;
-    console.log(newUserGoal);
+  // saveUserGoal(event){
+  //   const newUserGoal = event.target.innerText;
+  //   console.log(newUserGoal);
     // console.log(event.target.id[0]);
     // this.props.dispatch(actions.updateGoal(newUserGoal))
-  }
+  // }
 
   render() {
     // console.log(this.props.userGoals);
     const goals = this.props.userGoals.map((goal, idx) => {
       return <div>
-        <div key={idx} goalId={goal._id}
-          onBlur={this.saveUserGoal} contentEditable='true'>{goal.goal}</div>
+        <div key={idx}
+          onBlur={(event) => {
+            console.log(event.target.innerText)
+            this.props.dispatch(actions.updateGoal(event.target.innerText, goal._id))}}
+           contentEditable='true'>{goal.goal}</div>
         <button id='saveButton' onClick={this.saveUserGoal}>Save</button>
         <button onClick={() => {this.props.dispatch(actions.deleteGoal(goal._id))}}>
           Delete</button>

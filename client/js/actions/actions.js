@@ -19,6 +19,7 @@ export const fetchGoalsError = error => ({
   error
 })
 
+
 export const fetchGoals = () => dispatch => {
   return fetch(url)
   .then(dispatch(fetchGoalsRequest()))
@@ -61,9 +62,16 @@ export const deleteGoal = (id) => dispatch => {
   .then(() => dispatch(fetchGoals()))
 }
 
-export const updateGoal = (id) => dispatch => {
+export const updateGoal = (goal, id) => dispatch => {
   return fetch(url + "/" + id, {
-    method: 'PUT'
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      goal
+    })
   })
-  .then(() => dispatch(fetchGoals()))
+  .then(response => response.json())
+  .then((goal) => dispatch(fetchGoalsSuccess(goal)))
 }
