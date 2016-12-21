@@ -19,6 +19,7 @@ export const fetchGoalsError = error => ({
   error
 })
 
+
 export const fetchGoals = () => dispatch => {
   return fetch(url)
   .then(dispatch(fetchGoalsRequest()))
@@ -39,14 +40,6 @@ export const fetchGoals = () => dispatch => {
   );
 };
 
-//when click button it sends id to this action
-export const deleteGoal = (id) => dispatch => {
-  return fetch(url + "/" + id, {
-    method: 'DELETE'
-  })
-  .then(() => dispatch(fetchGoals()))
-}
-
 export const addGoal = (goal) => dispatch => {
   return fetch(url, {
     method: 'POST',
@@ -59,4 +52,26 @@ export const addGoal = (goal) => dispatch => {
   })
   .then(response => response.json())
   .then(goal => dispatch(fetchGoalsSuccess(goal)))
+}
+
+//when click button it sends id to this action
+export const deleteGoal = (id) => dispatch => {
+  return fetch(url + "/" + id, {
+    method: 'DELETE'
+  })
+  .then(() => dispatch(fetchGoals()))
+}
+
+export const updateGoal = (goal, id) => dispatch => {
+  return fetch(url + "/" + id, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      goal
+    })
+  })
+  .then(response => response.json())
+  .then((goal) => dispatch(fetchGoalsSuccess(goal)))
 }

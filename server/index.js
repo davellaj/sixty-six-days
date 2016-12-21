@@ -66,7 +66,8 @@ app.post('/api/home', function(req, res) {
       })
 })
 
-app.put('/api/home/:id', (req, res) => {
+app.put('/api/home/:id', jsonParser, (req, res) => {
+  console.log(req.body)
   Goals.findOneAndUpdate(
     {_id: req.params.id},
     {$set:{goal: req.body.goal}},
@@ -77,8 +78,14 @@ app.put('/api/home/:id', (req, res) => {
         console.error(error);
         res.sendStatus(400);
       }
-      res.sendStatus(201);
-     }
+      Goals.find({}, (err, goal) => {
+          if(err){
+              res.send(err)
+          }
+          res.json(goal)
+      })
+        // res.sendStatus(200);
+      }
   );
 });
 
