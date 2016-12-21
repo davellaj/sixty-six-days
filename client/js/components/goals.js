@@ -1,6 +1,7 @@
-import React from 'react'
-import {connect} from 'react-redux'
-import * as actions from '../actions/actions'
+import React from 'react';
+import {connect} from 'react-redux';
+import * as actions from '../actions/actions';
+import Calendar from './due-dates';
 
 export class Goals extends React.Component {
   constructor(props){
@@ -28,7 +29,6 @@ export class Goals extends React.Component {
     // console.log(event.target.id[0]);
     // this.props.dispatch(actions.updateGoal(newUserGoal))
   // }
-
   render() {
     // console.log(this.props.userGoals);
     const goals = this.props.userGoals.map((goal, idx) => {
@@ -36,8 +36,9 @@ export class Goals extends React.Component {
         <div key={idx}
           onBlur={(event) => this.props.dispatch(actions.updateGoal(event.target.innerText, goal._id))}
            contentEditable='true'>{goal.goal}</div>
-        <button onClick={() => {this.props.dispatch(actions.deleteGoal(goal._id))}}>
+        <button type="button" class="btn btn-default" onClick={() => {this.props.dispatch(actions.deleteGoal(goal._id))}}>
           Delete</button>
+          <Calendar />
       </div>
     })
     return (
@@ -52,7 +53,8 @@ export class Goals extends React.Component {
         <ul>
           {goals}
         </ul>
-      </div>
+        </div>
+
     )
   }
 }
