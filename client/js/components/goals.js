@@ -24,8 +24,9 @@ export class Goals extends React.Component {
 
   saveUserGoal(event){
     const newUserGoal = event.target.innerText;
-    console.log(event.target.goalId);
-    // this.props.dispatch(actions.updateGoal(newUserGoal, data-goal-id))
+    console.log(newUserGoal);
+    // console.log(event.target.id[0]);
+    // this.props.dispatch(actions.updateGoal(newUserGoal))
   }
 
   render() {
@@ -35,7 +36,8 @@ export class Goals extends React.Component {
         <div key={idx} goalId={goal._id}
           onBlur={this.saveUserGoal} contentEditable='true'>{goal.goal}</div>
         <button id='saveButton' onClick={this.saveUserGoal}>Save</button>
-        <button onClick={() => {this.props.dispatch(actions.deleteGoal(goal._id))}}>Delete</button>
+        <button onClick={() => {this.props.dispatch(actions.deleteGoal(goal._id))}}>
+          Delete</button>
       </div>
     })
     // console.log(this.props)
@@ -44,7 +46,8 @@ export class Goals extends React.Component {
         <form onSubmit={this.sendUserGoal}>
           <label>New Goal</label>
           <br></br>
-          <input type="text" ref={input => this.textInput = input} placeholder="type your goal"/>
+          <input type="text" ref={input => this.textInput = input}
+            placeholder="type your goal"/>
           <button type="submit">Submit</button>
         </form>
         <ul>
