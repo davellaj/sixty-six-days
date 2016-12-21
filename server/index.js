@@ -66,14 +66,13 @@ app.post('/api/home', function(req, res) {
       })
 })
 
-app.put('/api/home/:id', jsonParser, (req, res) => {
+app.put('/api/home/:id', (req, res) => {
   console.log(req.body)
   Goals.findOneAndUpdate(
     {_id: req.params.id},
     {$set:{goal: req.body.goal}},
     {upsert: true},
     function(error){
-      //  console.log('updated')
       if (error) {
         console.error(error);
         res.sendStatus(400);
@@ -84,7 +83,6 @@ app.put('/api/home/:id', jsonParser, (req, res) => {
           }
           res.json(goal)
       })
-        // res.sendStatus(200);
       }
   );
 });

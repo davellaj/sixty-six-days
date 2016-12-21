@@ -34,16 +34,12 @@ export class Goals extends React.Component {
     const goals = this.props.userGoals.map((goal, idx) => {
       return <div>
         <div key={idx}
-          onBlur={(event) => {
-            console.log(event.target.innerText)
-            this.props.dispatch(actions.updateGoal(event.target.innerText, goal._id))}}
+          onBlur={(event) => this.props.dispatch(actions.updateGoal(event.target.innerText, goal._id))}
            contentEditable='true'>{goal.goal}</div>
-        <button id='saveButton' onClick={this.saveUserGoal}>Save</button>
         <button onClick={() => {this.props.dispatch(actions.deleteGoal(goal._id))}}>
           Delete</button>
       </div>
     })
-    // console.log(this.props)
     return (
       <div>
         <form onSubmit={this.sendUserGoal}>
