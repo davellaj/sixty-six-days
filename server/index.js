@@ -100,6 +100,18 @@ app.delete('/api/home/:id', (req, res) => {
   );
 })
 
+app.get('/api/stickers', (req, res) => {
+  res.send('hi')
+  // Goals.find({})
+  // .then((goals) => {
+  //   return response.status(200).json(goals);
+  // })
+  // .catch(err => {
+  //   console.error(err);
+  //   response.status(500).json({message: 'internal server error'})
+  // })
+})
+
 
 if (require.main === module) {
     runServer();
