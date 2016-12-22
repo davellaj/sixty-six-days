@@ -32,12 +32,12 @@ export class Goals extends React.Component {
   render() {
     // console.log(this.props.userGoals);
     const goals = this.props.userGoals.map((goal, idx) => {
-      return <div className="flex" key={idx}>
+      return <div className="goalBox" key={idx}>
         <div key={idx}
           onBlur={(event) => this.props.dispatch(actions.updateGoal(event.target.innerText, goal._id))}
            contentEditable='true'>{goal.goal}
          </div>
-         <button className="inlineButton" className="btn-xs btn-warning" onClick={() => {this.props.dispatch(actions.deleteGoal(goal._id))}}>
+         <button className="btn-xs btn-warning" onClick={() => {this.props.dispatch(actions.deleteGoal(goal._id))}}>
           Delete</button>
           <Calendar goal={goal.goal}/>
       </div>
@@ -53,9 +53,9 @@ export class Goals extends React.Component {
             </div>
           </div>
         </form>
-        <ul>
+        <div className="goalsContainer">
           {goals}
-        </ul>
+        </div>
         </div>
 
     )

@@ -1,5 +1,25 @@
 import React from 'react'
 
+const images = [
+  'https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcT0hCinHGYyY6xo2azGQVC2udeCPFWcvCSnDteoJ15ifC3qcNOu',
+  // 'https://ih1.redbubble.net/image.12893531.1313/sticker,220x200-pad,220x200,ffffff.u1.jpg',
+  // 'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRa1diPgUV58TD_nHuICVMAvpS3NWbQM-UamR_nTYSDETEjtErWGQ',
+  'https://www.homecirclemedia.com/image/cache/data/Fairy_Tail_Happy_Sticker-500x500.jpg',
+  'http://www.sticker-forever.com/image/en/don-t-worry-be-happy-sticker.jpg',
+  'http://cdn3.volusion.com/sbcpn.tjpek/v/vspfiles/photos/MARK003A-2.jpg?1314150398',
+  'https://ih0.redbubble.net/image.178351858.7426/sticker,375x360.u3.png',
+  'https://www.google.com/url?sa=i&rct=j&q=&esrc=s&source=imgres&cd=&cad=rja&uact=8&ved=0ahUKEwii_eGL3YjRAhUp64MKHfy9CGUQjRwIBw&url=http%3A%2F%2Fwww.zazzle.com%2Fgreat%2Bjob%2Bstickers&psig=AFQjCNHBi5m3UAVKpPzUB31XalJpr4whow&ust=1482527939456027',
+  'https://pbs.twimg.com/profile_images/2240844153/001.png',
+  'http://rlv.zcache.com/turtley_totally_awesome_classic_round_sticker-r69fb57977e254c67a58ef11d0989b407_v9waf_8byvr_324.jpg',
+  'http://rlv.zcache.com/awesome_sauce_square_sticker-r4c90745dc2ab43eab48fe169744e92ba_v9wf3_8byvr_324.jpg',
+  'https://ih0.redbubble.net/image.26116675.2219/sticker,375x360.u2.png',
+  'http://www.bankokuponlar.org/Assets/Images/bazinga.png',
+  'https://www.google.com/url?sa=i&rct=j&q=&esrc=s&source=imgres&cd=&cad=rja&uact=8&ved=0ahUKEwjuibbz3YjRAhVD4IMKHY5VCSQQjRwIBw&url=http%3A%2F%2Fgogodragons.co.uk%2F&psig=AFQjCNElr16xTnDdE6sd8_BcIs4Zs_vUdA&ust=1482528154609029',
+  'https://ih0.redbubble.net/image.192105858.1609/sticker,220x200-pad,220x200,ffffff.u1.jpg',
+  'http://rlv.zcache.com/sticker_vintage_rosie_the_riveter_done_it_or-rf9bbb140a200471ca4bf7f8c8e050b73_v9waf_8byvr_630.jpg?view_padding=%5B285%2C0%2C285%2C0%5D',
+  'http://rlv.zcache.com/jwd_job_well_done_wash_design_classic_round_sticker-rb98e008578474834bf419553bac305bf_v9waf_8byvr_324.jpg'
+
+]
 const quotes = [
   'Nothing can stop the man with the right mental attitude from achieving his goal; nothing on earth can help the man with the wrong mental attitude.'+
   '-Thomas Jefferson',
@@ -34,17 +54,17 @@ const quotes = [
 ];
 
 const randomize = Math.floor(Math.random()*15);
-// console.log(quotes[randomize()]);
+// console.log(images[randomize]);
 
 function Sticker() {
   return (
     <div>
-      <img height={100} className='sticker' src='https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcT0hCinHGYyY6xo2azGQVC2udeCPFWcvCSnDteoJ15ifC3qcNOu' alt='dog' />
-      <p>{quotes[randomize]}</p>
-      <img height={100} className='sticker' src='https://ih1.redbubble.net/image.12893531.1313/sticker,220x200-pad,220x200,ffffff.u1.jpg' />
-      <p>{quotes[randomize]}</p>
-      <img height={100} className='sticker' src='https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRa1diPgUV58TD_nHuICVMAvpS3NWbQM-UamR_nTYSDETEjtErWGQ' />
-      <p>{quotes[randomize]}</p>
+      <img height={100} className='sticker' src={images[4]} />
+      <p>{quotes[0]}</p>
+      <img height={100} className='sticker' src={images[1]} />
+      <p>{quotes[1]}</p>
+      <img height={100} className='sticker' src={images[3]} />
+      <p>{quotes[2]}</p>
     </div>
   )
 }
