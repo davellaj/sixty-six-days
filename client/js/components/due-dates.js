@@ -1,28 +1,34 @@
 import React from 'react';
 import AddToCalendar from 'react-add-to-calendar';
+import {connect} from 'react-redux';
 
-export default class Calendar extends React.Component {
+export class Calendar extends React.Component {
   constructor(props){
     super(props);
 
-    let event = {
-        title: 'Sample Event',
-        description: '',
-        location: '',
-        startTime: '',
-        endTime: ''
-    };
 
     /*
        startTime and endTime can use any datetime
        string that is acceptable by MomentJS
     */
-    // return event;
+}
 
-  }
 
   render() {
-    // console.log(event)
+    console.log(this.props);
+    const event = {
+        title: this.props.goal,
+        description: 'You can do it!',
+        location: 'Chicago, IL',
+        startTime: new Date(),
+        endTime: new Date()
+    };
     return <AddToCalendar event={event} />;
     }
 };
+
+const mapStateToProps = (state, props) => ({
+  userGoals: state.goals
+})
+
+export default connect(mapStateToProps)(Calendar)
