@@ -39,7 +39,7 @@ export class Goals extends React.Component {
          </div>
          <button className="inlineButton" className="btn-xs btn-warning" onClick={() => {this.props.dispatch(actions.deleteGoal(goal._id))}}>
           Delete</button>
-          <Calendar />
+          <Calendar goal={goal.goal}/>
       </div>
     })
     return (
