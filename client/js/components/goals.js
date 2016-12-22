@@ -42,6 +42,7 @@ export class Goals extends React.Component {
           <Calendar goal={goal.goal}/>
       </div>
     })
+
     return (
       <div className="container">
         <form className="form-horizontal" onSubmit={this.sendUserGoal}>
