@@ -32,23 +32,26 @@ export class Goals extends React.Component {
   render() {
     // console.log(this.props.userGoals);
     const goals = this.props.userGoals.map((goal, idx) => {
-      return <div key={idx}>
+      return <div className="flex" key={idx}>
         <div key={idx}
           onBlur={(event) => this.props.dispatch(actions.updateGoal(event.target.innerText, goal._id))}
-           contentEditable='true'>{goal.goal}</div>
-         <button className="btn btn-warning" onClick={() => {this.props.dispatch(actions.deleteGoal(goal._id))}}>
+           contentEditable='true'>{goal.goal}
+         </div>
+         <button className="inlineButton" className="btn-xs btn-warning" onClick={() => {this.props.dispatch(actions.deleteGoal(goal._id))}}>
           Delete</button>
           <Calendar />
       </div>
     })
     return (
-      <div>
-        <form onSubmit={this.sendUserGoal}>
-          <label>New Goal</label>
-          <br></br>
-          <input type="text" ref={input => this.textInput = input}
-            placeholder="type your goal"/>
-          <button type="submit">Submit</button>
+      <div className="container">
+        <form className="form-horizontal" onSubmit={this.sendUserGoal}>
+          <div className="form-group has-success has-feedback">
+            <label className="col-sm-2 control-label" for="inputSuccess">New Goal</label>
+            <div className="col-sm-6">
+              <input type="text" className="form-control" id="inputSuccess" ref={input => this.textInput = input}
+                placeholder="type your goal and press enter"/>
+            </div>
+          </div>
         </form>
         <ul>
           {goals}
