@@ -5,6 +5,8 @@ import {Provider} from 'react-redux'
 import store from './store'
 import Page from './components/pageContainer';
 
+
+
 console.log(`Client running in ${process.env.NODE_ENV} mode`);
 // console.log(store.getState());
 
