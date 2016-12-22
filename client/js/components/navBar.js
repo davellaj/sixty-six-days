@@ -2,12 +2,12 @@ import React from 'react'
 
 function NavBar() {
   return (
-    <div>
-      <a href="">Home</a>
+    <div className="navBar">
+      <a href="" className="navBarItem">Home</a>
       &nbsp;
-      <a href="">Profile</a>
+      <a href="" className="navBarItem">Profile</a>
       &nbsp;
-      <a href="">Friends</a>
+      <a href="" className="navBarItem">Groups</a>
     </div>
   )
 }
