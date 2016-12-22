@@ -6,10 +6,12 @@ import Funds from './funds'
 
 function Page() {
   return (
-    <div>
-      <Funds />
-      <Sticker />
-      <Motivation />
+    <div className="container">
+      <div className="jumbotron">
+        <Funds />
+        <Sticker />
+        <Motivation />
+      </div>
       <Goals />
     </div>
   )
