@@ -33,7 +33,7 @@ export class Goals extends React.Component {
     // console.log(this.props.userGoals);
     const goals = this.props.userGoals.map((goal, idx) => {
       return <div className="goalBox" key={idx}>
-        <div key={idx}
+        <div key={idx} className="goalText"
           onBlur={(event) => this.props.dispatch(actions.updateGoal(event.target.innerText, goal._id))}
            contentEditable='true'>{goal.goal}
          </div>

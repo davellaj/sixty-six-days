@@ -58,13 +58,13 @@ const randomize = Math.floor(Math.random()*15);
 
 function Sticker() {
   return (
-    <div>
-      <img height={100} className='sticker' src={images[4]} />
-      <p>{quotes[0]}</p>
-      <img height={100} className='sticker' src={images[1]} />
-      <p>{quotes[1]}</p>
-      <img height={100} className='sticker' src={images[3]} />
-      <p>{quotes[2]}</p>
+    <div className="sticker-container">
+      <img height={120} className='sticker' src={images[4]} />
+      <p className="quote">{quotes[0]}</p>
+      <img height={120} className='sticker' src={images[1]} />
+      <p className="quote">{quotes[1]}</p>
+      <img height={120} className='sticker' src={images[3]} />
+      <p className="quote">{quotes[2]}</p>
     </div>
   )
 }

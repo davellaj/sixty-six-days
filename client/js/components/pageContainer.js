@@ -7,6 +7,9 @@ function Page() {
   return (
     <div className="container">
       <NavBar />
+        <h1 className="title">66 Days</h1>
+        <hr></hr>
+        <p className="subtitle">On average, it takes more than two months before a new behavior becomes automatic — 66 days to be exact.</p>
         <h3>Your Goals</h3>
       <Goals />
       <div className="jumbotron">

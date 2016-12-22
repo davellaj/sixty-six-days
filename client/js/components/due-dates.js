@@ -23,7 +23,7 @@ export class Calendar extends React.Component {
         startTime: new Date(),
         endTime: new Date()
     };
-    return <AddToCalendar event={event} />;
+    return <AddToCalendar className="addToCalendar" event={event} />;
     }
 };
 
