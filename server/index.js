@@ -50,7 +50,7 @@ function runServer() {
 app.post('/api/home', function(req, res) {
 // in future will have to find individual user and then add goal
   let goal = new Goals()
-  console.log(req.body);
+  // console.log(req.body);
       goal.goal = req.body.goal
       goal.user = req.body.user
       goal.completed = false
@@ -70,7 +70,7 @@ app.post('/api/home', function(req, res) {
 })
 
 app.put('/api/home/:id', (req, res) => {
-  console.log(req.body)
+  // console.log(req.body)
   Goals.findOneAndUpdate(
     {_id: req.params.id},
     {$set:{goal: req.body.goal}},
