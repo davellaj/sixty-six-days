@@ -31,12 +31,14 @@ export class Goals extends React.Component {
   // }
   render() {
     // console.log(this.props.userGoals);
-    // if(goal.completed){
-    //   let ele = document.getElementById(idx);
-    //   ele.style.setProperty("text-decoration", "line-through")
-    // }
-    // else{
-    //   ele.style.setProperty("text-decoration", "none")
+    // const lineThru = () => {
+    //     if(goal.completed){
+    //     let ele = document.getElementById(idx);
+    //     ele.style.setProperty("text-decoration", "line-through")
+    //   }
+    //   else{
+    //     ele.style.setProperty("text-decoration", "none")
+    //   };
     // }
     const goals = this.props.userGoals.map((goal, idx) => {
       return <div className="goalBox" id={idx} key={idx}>
