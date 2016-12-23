@@ -51,6 +51,7 @@ app.post('/api/home', function(req, res) {
   console.log(req.body);
       goal.goal = req.body.goal
       goal.user = req.body.user
+      goal.completed = false
 
       goal.save((err, goal) => {
           if(err){
@@ -77,6 +78,31 @@ app.put('/api/home/:id', (req, res) => {
         console.error(error);
         res.sendStatus(400);
       }
+      Goals.find({}, (err, goal) => {
+          if(err){
+              res.send(err)
+          }
+          res.json(goal)
+      })
+      }
+  );
+});
+
+app.put('/api/home/completed/:id', (req, res) => {
+
+  Goals.findOne({_id: req.params.id}, function(err,obj) {
+    // console.log(obj.completed);
+  Goals.findOneAndUpdate(
+    {_id: req.params.id},
+    {$set:{completed: !obj.completed}},
+    {upsert: true},
+    function(error){
+      if (error) {
+        console.error(error);
+        res.sendStatus(400);
+      }
+    });
+
       Goals.find({}, (err, goal) => {
           if(err){
               res.send(err)

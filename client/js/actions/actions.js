@@ -75,3 +75,11 @@ export const updateGoal = (goal, id) => dispatch => {
   .then(response => response.json())
   .then((goal) => dispatch(fetchGoalsSuccess(goal)))
 }
+
+export const updateCompletedGoal = (id) => dispatch => {
+  return fetch(url + "/completed/" + id, {
+    method: 'PUT'
+  })
+  .then(() => dispatch(fetchGoals()))
+  .then((response))
+}

@@ -2,6 +2,7 @@ import * as actions from '../actions/actions';
 
 const initialState = {
   goals: [],
+  completed: false,
   // users: [],
   loading: false,
   error: null
@@ -17,6 +18,7 @@ export const GoalsReducer = (state=initialState, action) => {
   if (action.type === actions.FETCH_GOALS_SUCCESS) {
     return {...state,
       goals: action.goals,
+      completed: action.completed,
       loading: false,
       error: null
     }
