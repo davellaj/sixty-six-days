@@ -38,7 +38,7 @@ export class Goals extends React.Component {
                     this.props.dispatch(actions.deleteGoal(goal._id))
                 }}>
                     Delete</button>
-                <Calendar goal={goal.goal}/>
+                <div className="calendar"><Calendar goal={goal.goal}/></div>
             </div>
         })
 
