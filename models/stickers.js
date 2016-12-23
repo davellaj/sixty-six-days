@@ -1,12 +1,8 @@
 import mongoose from 'mongoose'
 
-const goalsSchema = mongoose.Schema({
-  goal: {type: String, required: true},
-  difficulty: String,
-  reward: Number,
-  dueDate: Date,
-  reminder: Boolean,
-  user: String
+const stickersSchema = mongoose.Schema({
+  images: Array,
+  quotes: Array
 });
 
-module.exports = mongoose.model('Goals', goalsSchema)
+module.exports = mongoose.model('Stickers', stickersSchema)

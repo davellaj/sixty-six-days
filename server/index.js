@@ -2,6 +2,8 @@ import 'babel-polyfill';
 import express from 'express';
 import mongoose from 'mongoose';
 import Goals from '../models/goals';
+import Stickers from '../models/stickers';
+
 import bodyParser from 'body-parser';
 
 const HOST = process.env.HOST;
@@ -51,6 +53,7 @@ app.post('/api/home', function(req, res) {
   // console.log(req.body);
       goal.goal = req.body.goal
       goal.user = req.body.user
+      goal.completed = false
 
       goal.save((err, goal) => {
           if(err){
@@ -87,6 +90,31 @@ app.put('/api/home/:id', (req, res) => {
   );
 });
 
+app.put('/api/home/completed/:id', (req, res) => {
+
+  Goals.findOne({_id: req.params.id}, function(err,obj) {
+    // console.log(obj.completed);
+  Goals.findOneAndUpdate(
+    {_id: req.params.id},
+    {$set:{completed: !obj.completed}},
+    {upsert: true},
+    function(error){
+      if (error) {
+        console.error(error);
+        res.sendStatus(400);
+      }
+    });
+
+      Goals.find({}, (err, goal) => {
+          if(err){
+              res.send(err)
+          }
+          res.json(goal)
+      })
+      }
+  );
+});
+
 app.delete('/api/home/:id', (req, res) => {
   Goals.findByIdAndRemove(
     {_id: req.params.id},
@@ -100,16 +128,15 @@ app.delete('/api/home/:id', (req, res) => {
   );
 })
 
-app.get('/api/stickers', (req, res) => {
-  res.send('hi')
-  // Goals.find({})
-  // .then((goals) => {
-  //   return response.status(200).json(goals);
-  // })
-  // .catch(err => {
-  //   console.error(err);
-  //   response.status(500).json({message: 'internal server error'})
-  // })
+app.get('/api/home/stickers', (req, res) => {
+  Stickers.find({})
+  .then((stickers) => {
+    return res.status(200).json(stickers);
+  })
+  .catch(err => {
+    console.error(err);
+    res.status(500).json({message: 'internal server error'})
+  })
 })
 
 

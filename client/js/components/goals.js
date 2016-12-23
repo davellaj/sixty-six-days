@@ -27,20 +27,32 @@ export class Goals extends React.Component {
     //   console.log(newUserGoal);
     // console.log(event.target.id[0]);
     // this.props.dispatch(actions.updateGoal(newUserGoal))
+  // }
+  render() {
+    // console.log(this.props.userGoals);
+    // const lineThru = () => {
+    //     if(goal.completed){
+    //     let ele = document.getElementById(idx);
+    //     ele.style.setProperty("text-decoration", "line-through")
+    //   }
+    //   else{
+    //     ele.style.setProperty("text-decoration", "none")
+    //   };
     // }
-    render() {
-        // console.log(this.props.userGoals);
-        const goals = this.props.userGoals.map((goal, idx) => {
-            return <div className="goalBox" key={idx}>
-                <div key={idx} className="goalText" onBlur={(event) => this.props.dispatch(actions.updateGoal(event.target.innerText, goal._id))} contentEditable='true'>{goal.goal}
-                </div>
-                <button className="btn-xs btn-warning" onClick={() => {
-                    this.props.dispatch(actions.deleteGoal(goal._id))
-                }}>
-                    Delete</button>
-                <div className="calendar"><Calendar goal={goal.goal}/></div>
-            </div>
-        })
+    const goals = this.props.userGoals.map((goal, idx) => {
+      return <div className="goalBox" id={idx} key={idx}>
+        <div key={idx} className="goalText"
+          onBlur={(event) => this.props.dispatch(actions.updateGoal(event.target.innerText, goal._id))}
+           contentEditable='true'>{goal.goal}
+         </div>
+         <button className="btn-xs btn-success" onClick={() => {
+             this.props.dispatch(actions.updateCompletedGoal(goal._id))}}>
+          Done!</button>
+         <button className="btn-xs btn-warning" onClick={() => {this.props.dispatch(actions.deleteGoal(goal._id))}}>
+          Delete</button>
+          <div className="calendar"><Calendar goal={goal.goal}/></div>
+      </div>
+    })
 
         return (
             <div className="container">
