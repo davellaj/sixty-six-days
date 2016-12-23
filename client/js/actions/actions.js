@@ -1,10 +1,10 @@
 import 'isomorphic-fetch'
 
-const url = `/api/home`
+const url = `http://localhost:8080/api/home`
 
-export const FETCH_REQUEST = 'FETCH_REQUEST';
-export const fetchRequest = () => ({
-  type: FETCH_REQUEST
+export const FETCH_GOALS_REQUEST = 'FETCH_GOALS_REQUEST';
+export const fetchGoalsRequest = () => ({
+  type: FETCH_GOALS_REQUEST
 })
 
 export const FETCH_GOALS_SUCCESS = 'FETCH_GOALS_SUCCESS';
@@ -13,21 +13,16 @@ export const fetchGoalsSuccess = goals => ({
   goals
 })
 
-export const FETCH_ERROR = 'FETCH_GOALS_ERROR';
-export const fetchError = error => ({
-  type: FETCH_ERROR,
+export const FETCH_GOALS_ERROR = 'FETCH_GOALS_ERROR';
+export const fetchGoalsError = error => ({
+  type: FETCH_GOALS_ERROR,
   error
 })
 
-export const FETCH_STICKERS_SUCCESS = 'FETCH_STICKERS_SUCCESS';
-export const fetchStickersSuccess = stickers => ({
-  type: FETCH_STICKERS_SUCCESS,
-  stickers
-})
 
 export const fetchGoals = () => dispatch => {
   return fetch(url)
-  .then(dispatch(fetchRequest()))
+  .then(dispatch(fetchGoalsRequest()))
   .then(response => {
     if (!response.ok) {
       const error = new Error(response.statusText)
@@ -41,7 +36,7 @@ export const fetchGoals = () => dispatch => {
   dispatch(fetchGoalsSuccess(goalData))
   )
   .catch(error =>
-    dispatch(fetchError(error))
+    dispatch(fetchGoalsError(error))
   );
 };
 
@@ -80,31 +75,3 @@ export const updateGoal = (goal, id) => dispatch => {
   .then(response => response.json())
   .then((goal) => dispatch(fetchGoalsSuccess(goal)))
 }
-
-export const updateCompletedGoal = (id) => dispatch => {
-  return fetch(url + "/completed/" + id, {
-    method: 'PUT'
-  })
-  .then(() => dispatch(fetchGoals()))
-  .then((response))
-}
-
-export const fetchStickers = () => dispatch => {
-  return fetch(url + "/stickers")
-  .then(dispatch(fetchRequest()))
-  .then(response => {
-    if (!response.ok) {
-      const error = new Error(response.statusText)
-      error.response = response
-      throw error;
-    }
-    return response;
-  })
-  .then(response => response.json())
-  .then(stickerData =>
-  dispatch(fetchStickerSuccess(stickerData))
-  )
-  .catch(error =>
-    dispatch(fetchError(error))
-  );
-};

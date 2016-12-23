@@ -20,6 +20,13 @@ const images = [
   'http://rlv.zcache.com/jwd_job_well_done_wash_design_classic_round_sticker-rb98e008578474834bf419553bac305bf_v9waf_8byvr_324.jpg'
 
 ]
+
+const feedback = [
+    'Way to go!',
+    'Keep up the good work!',
+    'That\'s the way to do it!'
+]
+
 const quotes = [
   'Nothing can stop the man with the right mental attitude from achieving his goal; nothing on earth can help the man with the wrong mental attitude.'+
   '-Thomas Jefferson',
@@ -60,11 +67,11 @@ function Sticker() {
   return (
     <div className="sticker-container">
       <img height={120} className='sticker' src={images[4]} />
-      <p className="quote">{quotes[0]}</p>
+      <p className="quote">{feedback[0]}</p>
       <img height={120} className='sticker' src={images[1]} />
-      <p className="quote">{quotes[1]}</p>
+      <p className="quote">{feedback[1]}</p>
       <img height={120} className='sticker' src={images[3]} />
-      <p className="quote">{quotes[2]}</p>
+      <p className="quote">{feedback[2]}</p>
     </div>
   )
 }

@@ -39,6 +39,7 @@ export class Goals extends React.Component {
     //     ele.style.setProperty("text-decoration", "none")
     //   };
     // }
+    
     const goals = this.props.userGoals.map((goal, idx) => {
       return <div className="goalBox" id={idx} key={idx}>
         <div key={idx} className="goalText"
