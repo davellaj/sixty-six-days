@@ -1,14 +1,13 @@
 import React from 'react'
+import {connect} from 'react-redux';
+
 
 const images = [
   'https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcT0hCinHGYyY6xo2azGQVC2udeCPFWcvCSnDteoJ15ifC3qcNOu',
-  // 'https://ih1.redbubble.net/image.12893531.1313/sticker,220x200-pad,220x200,ffffff.u1.jpg',
-  // 'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRa1diPgUV58TD_nHuICVMAvpS3NWbQM-UamR_nTYSDETEjtErWGQ',
   'https://www.homecirclemedia.com/image/cache/data/Fairy_Tail_Happy_Sticker-500x500.jpg',
   'http://www.sticker-forever.com/image/en/don-t-worry-be-happy-sticker.jpg',
   'http://cdn3.volusion.com/sbcpn.tjpek/v/vspfiles/photos/MARK003A-2.jpg?1314150398',
   'https://ih0.redbubble.net/image.178351858.7426/sticker,375x360.u3.png',
-  'https://www.google.com/url?sa=i&rct=j&q=&esrc=s&source=imgres&cd=&cad=rja&uact=8&ved=0ahUKEwii_eGL3YjRAhUp64MKHfy9CGUQjRwIBw&url=http%3A%2F%2Fwww.zazzle.com%2Fgreat%2Bjob%2Bstickers&psig=AFQjCNHBi5m3UAVKpPzUB31XalJpr4whow&ust=1482527939456027',
   'https://pbs.twimg.com/profile_images/2240844153/001.png',
   'http://rlv.zcache.com/turtley_totally_awesome_classic_round_sticker-r69fb57977e254c67a58ef11d0989b407_v9waf_8byvr_324.jpg',
   'http://rlv.zcache.com/awesome_sauce_square_sticker-r4c90745dc2ab43eab48fe169744e92ba_v9wf3_8byvr_324.jpg',
@@ -53,52 +52,45 @@ const quotes = [
   '-Scott Reed'
 ];
 
-const randomize = Math.floor(Math.random()*15);
+const randomize = Math.floor(Math.random()*13);
 // console.log(images[randomize]);
 
-function Sticker() {
-  return (
-    <div className="sticker-container">
-      <img height={120} className='sticker' src={images[4]} />
-      <p className="quote">{quotes[0]}</p>
-      <img height={120} className='sticker' src={images[1]} />
-      <p className="quote">{quotes[1]}</p>
-      <img height={120} className='sticker' src={images[3]} />
-      <p className="quote">{quotes[2]}</p>
-    </div>
-  )
+export class Sticker extends React.Component {
+
+  render() {
+
+    const completedSticker = this.props.userGoals.map((goal, idx) => {
+      const randomize = Math.floor(Math.random()*13);
+      if(goal.completed){
+        return (
+          <div>
+            <img height={120} className='sticker' key={idx} src={images[randomize]} />
+            <p className="quote">{quotes[0]}</p>
+          </div>
+        )
+      }
+      //
+
+    })
+
+    return (
+      <div className="sticker-container">
+        <img height={120} className='sticker' src={images[4]} />
+        <p className="quote">{quotes[0]}</p>
+        <img height={120} className='sticker' src={images[1]} />
+        <p className="quote">{quotes[1]}</p>
+        <img height={120} className='sticker' src={images[3]} />
+        <p className="quote">{quotes[2]}</p>
+        {completedSticker}
+      </div>
+    )
+  }
 }
 
-export default Sticker
+const mapStateToProps = (state, props) => ({userGoals: state.goals})
+
+export default connect(mapStateToProps)(Sticker)
 
 //eventually make this pull from users the array of images and
 // quotes that user has earned. This will mapStateToProps and pull
 // from the user collection
-
-
-// <div className='row'>
-//    <div className='col-md-4'>
-//        <div className='thumbnail'>
-//            <img src='https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcT0hCinHGYyY6xo2azGQVC2udeCPFWcvCSnDteoJ15ifC3qcNOu' alt='Lights' style='width:100%'>
-//            <div className='caption'>
-//              <p>Lorem ipsum...</p>
-//            </div>
-//        </div>
-//     </div>
-//        <div className='col-md-4'>
-//          <div className='thumbnail'>
-//              <img src='https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcT0hCinHGYyY6xo2azGQVC2udeCPFWcvCSnDteoJ15ifC3qcNOu' alt='Nature' style='width:100%'>
-//              <div className='caption'>
-//                <p>Lorem ipsum...</p>
-//              </div>
-//          </div>
-//        </div>
-//      <div className='col-md-4'>
-//        <div className='thumbnail'>
-//            <img src='https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcT0hCinHGYyY6xo2azGQVC2udeCPFWcvCSnDteoJ15ifC3qcNOu' style='width:100%'>
-//            <div className='caption'>
-//              <p>Lorem ipsum...</p>
-//            </div>
-//        </div>
-//    </div>
-// </div>
