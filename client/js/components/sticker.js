@@ -22,7 +22,9 @@ const images = [
 const feedback = [
     'Way to go!',
     'Keep up the good work!',
-    'That\'s the way to do it!'
+    'That\'s the way to do it!',
+    'Super job!'
+
 ]
 
 const quotes = [
@@ -58,7 +60,7 @@ const quotes = [
   '-Scott Reed'
 ];
 
-const randomize = Math.floor(Math.random()*12);
+const randomize = Math.floor(Math.random()*4);
 // console.log(images[randomize]);
 
 export class Sticker extends React.Component {
@@ -66,12 +68,12 @@ export class Sticker extends React.Component {
   render() {
 
     const completedSticker = this.props.userGoals.map((goal, idx) => {
-      const randomize = Math.floor(Math.random()*13);
+      const randomize = Math.floor(Math.random()*4);
       if(goal.completed){
         return (
           <div>
             <img height={120} className='sticker' key={idx} src={images[randomize]} />
-            <p className="quote">{quotes[0]}</p>
+            <p className="quote">{feedback[randomize]}</p>
           </div>
         )
       }
