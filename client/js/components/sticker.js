@@ -71,7 +71,9 @@ function Sticker() {
 
 export default Sticker
 
-
+//eventually make this pull from users the array of images and
+// quotes that user has earned. This will mapStateToProps and pull
+// from the user collection
 
 
 // <div className='row'>
