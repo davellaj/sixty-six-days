@@ -1,6 +1,6 @@
 import 'isomorphic-fetch'
 
-const url = `/api/home`
+const url = `http://localhost:8080/api/home`
 
 export const FETCH_GOALS_REQUEST = 'FETCH_GOALS_REQUEST';
 export const fetchGoalsRequest = () => ({

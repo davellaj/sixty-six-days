@@ -1,6 +1,5 @@
 * {
   font-family: 'Dosis', sans-serif;
-  font-size: 16px;
 }
 
 .jumbotron {
@@ -17,22 +16,51 @@
 .navBar {
   display: flex;
   justify-content: flex-end;
-  padding: 30px;
 }
 
 .navBarItem {
   padding: 10px;
 }
 
+.container {
+  width: 500px;
+  margin-top: 10px;
+  padding-left: 0px;
+}
+
+h1, h2 {
+  font-family: 'Teko', sans-serif;
+}
+
+h2 {
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+.tagline {
+  width: 350px;
+    margin-right: 0;
+    font-size: 11px;
+    font-style: italic;
+}
+
+.calendar {
+  font-size: 10px;
+  color: grey;
+}
+
+.col-sm-2 control-label {
+  text-align: left;
+  width: 100px;
+}
+
 .goalBox {
   display: flex;
   border: 1px solid grey;
   margin: 2px;
-  width: 35%;
-  height: 30%;
+  width: 75%;
   margin-left: 0;
   flex-direction: row;
-  justify-content: center;
   padding: 10px;
 }
 
@@ -64,9 +92,15 @@
   flex-wrap: wrap;
   }
 .addToCalendar {
-  font-size: 14px;
+  font-size: 12px;
 }
 
 .btn-xs {
   margin-right: 5px;
+}
+
+footer {
+  text-align: center;
+  font-size: 8px;
+  margin-bottom: 5px;
 }
