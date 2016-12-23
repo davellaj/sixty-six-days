@@ -4,107 +4,118 @@
 
 .jumbotron {
   background-color: FOAD4E;
-  width: 600px;
+  width: 85%;
+  padding-left: 10px;
+  margin-left: 0px;
 }
 
 .jumbotron p {
-  margin: 5px;
-  font-size: 14px;
-  width: 50%;
+    margin: 5px;
+    font-size: 14px;
+    width: 50%;
 }
 
 .navBar {
-  display: flex;
-  justify-content: flex-end;
+    display: flex;
+    justify-content: flex-end;
 }
 
 .navBarItem {
-  padding: 10px;
+    padding: 10px;
 }
 
 .container {
-  width: 500px;
-  margin-top: 10px;
-  padding-left: 0px;
+    width: 500px;
+    margin-top: 10px;
+    padding-left: 0;
 }
 
-h1, h2 {
-  font-family: 'Teko', sans-serif;
+h1,
+h2 {
+    font-family: 'Teko', sans-serif;
 }
 
 h2 {
-  font-size: 14px;
-  margin-top: 5px;
+    font-size: 14px;
+    margin-top: 5px;
 }
 
-.tagline {
-  width: 350px;
-    margin-right: 0;
+.quotes {
+    width: 40%;
+    text-align: right;
     font-size: 11px;
     font-style: italic;
 }
 
 .calendar {
-  font-size: 10px;
-  color: grey;
+    font-size: 10px;
+    color: grey;
 }
 
 .col-sm-2 control-label {
-  text-align: left;
-  width: 100px;
+    text-align: left;
+    width: 100px;
 }
 
 .goalBox {
-  display: flex;
-  border: 1px solid grey;
-  margin: 2px;
-  width: 75%;
-  margin-left: 0;
-  flex-direction: row;
-  padding: 10px;
+    display: flex;
+    border: 1px solid grey;
+    margin: 2px;
+    width: 75%;
+    margin-left: 0;
+    flex-direction: row;
+    padding: 10px;
 }
 
 .goalText {
-  width: 50%;
-  vertical-align: bottom;
+    width: 50%;
+    vertical-align: bottom;
 }
 
 .goalsContainer {
-  display: flex;
-  width: 100%;
-  // align-items: flex-start;;
-  flex-direction: row;
-  flex-wrap: wrap;
-  // padding: 30px;
-  margin: 30px 0px 30px 0px;
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 30px 0;
 }
-// .inlineButton {
-//   display: inline-block;
-// }
+
 .sticker {
-  background-color: white;
-  border: 1px solid black;
-  margin: 10px;
+    background-color: white;
+    border: 1px solid black;
+    margin-left: 0px;
+    margin-bottom: 10px;
+    margin-right: 10px;
 }
 
 .sticker-container {
-  display: flex;
-  flex-wrap: wrap;
-  }
+    display: flex;
+    flex-wrap: wrap;
+}
+
 .addToCalendar {
-  font-size: 12px;
+    font-size: 12px;
 }
 
 .btn-xs {
-  margin-right: 5px;
+    margin-right: 5px;
 }
 
 footer {
-  text-align: center;
-  font-size: 8px;
-  margin-bottom: 5px;
+    text-align: center;
+    font-size: 10px;
+    margin-bottom: 10px;
 }
+
+
+// .tagline {
+//     width: 350px;
+//     margin-right: 0;
+//     font-size: 11px;
+//     font-style: italic;
+// }
 
 .strikeThru {
   text-decoration: line-through;
 }
+
