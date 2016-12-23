@@ -1,10 +1,12 @@
 * {
-    font-family: 'Dosis', sans-serif;
+  font-family: 'Dosis', sans-serif;
 }
 
 .jumbotron {
-    background-color: FOAD4E;
-    width: 600px;
+  background-color: FOAD4E;
+  width: 85%;
+  padding-left: 10px;
+  margin-left: 0px;
 }
 
 .jumbotron p {
@@ -39,7 +41,7 @@ h2 {
 }
 
 .quotes {
-    width: 300px;
+    width: 40%;
     text-align: right;
     font-size: 11px;
     font-style: italic;
@@ -73,20 +75,17 @@ h2 {
 .goalsContainer {
     display: flex;
     width: 100%;
-    // align-items: flex-start;;
     flex-direction: row;
     flex-wrap: wrap;
-    // padding: 30px;
     margin: 30px 0;
 }
-// .inlineButton {
-//   display: inline-block;
-// }
 
 .sticker {
     background-color: white;
     border: 1px solid black;
-    margin: 10px;
+    margin-left: 0px;
+    margin-bottom: 10px;
+    margin-right: 10px;
 }
 
 .sticker-container {

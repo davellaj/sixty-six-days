@@ -1,8 +1,8 @@
 import React from 'react'
 
 const quotes = [
-  'Nothing can stop the man with the right mental attitude from achieving his goal; nothing on earth can help the man with the wrong mental attitude.'+
-  "\n"+'-Thomas Jefferson',
+  'Nothing can stop the man with the right mental attitude from achieving his goal; nothing on earth can help the man with the wrong mental attitude.\
+  -Thomas Jefferson',
   'You are never too old to set another goal or to dream a new dream.'+
   '-Les Brown',
   'Know what you want to do, hold the thought firmly, and do every day what should be done, and every sunset will see you that much nearer to your goal.'+
@@ -39,7 +39,7 @@ const randomize = Math.floor(Math.random()*15);
 function Quotes() {
   return (
     <div className="quotes">
-      <p className="quote">{quotes[randomize]}</p>
+      <p className="quote">{quotes[0]}</p>
     </div>
   )
 }
