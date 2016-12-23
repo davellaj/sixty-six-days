@@ -29,7 +29,6 @@ export class Goals extends React.Component {
     // this.props.dispatch(actions.updateGoal(newUserGoal))
   // }
   render() {
-
     const goals = this.props.userGoals.map((goal, idx) => {
       let strikeThru = goal.completed ? "strikeThru": "";
       return <div className="goalBox" id={idx} key={idx}>
