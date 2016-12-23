@@ -29,19 +29,11 @@ export class Goals extends React.Component {
     // this.props.dispatch(actions.updateGoal(newUserGoal))
   // }
   render() {
-    // console.log(this.props.userGoals);
-    // const lineThru = () => {
-    //     if(goal.completed){
-    //     let ele = document.getElementById(idx);
-    //     ele.style.setProperty("text-decoration", "line-through")
-    //   }
-    //   else{
-    //     ele.style.setProperty("text-decoration", "none")
-    //   };
-    // }
+
     const goals = this.props.userGoals.map((goal, idx) => {
+      let strikeThru = goal.completed ? "strikeThru": "";
       return <div className="goalBox" id={idx} key={idx}>
-        <div key={idx} className="goalText"
+        <div key={idx} className={`goalText ${strikeThru}`}
           onBlur={(event) => this.props.dispatch(actions.updateGoal(event.target.innerText, goal._id))}
            contentEditable='true'>{goal.goal}
          </div>
