@@ -13,7 +13,6 @@ const images = [
   'http://rlv.zcache.com/awesome_sauce_square_sticker-r4c90745dc2ab43eab48fe169744e92ba_v9wf3_8byvr_324.jpg',
   'https://ih0.redbubble.net/image.26116675.2219/sticker,375x360.u2.png',
   'http://www.bankokuponlar.org/Assets/Images/bazinga.png',
-  'https://www.google.com/url?sa=i&rct=j&q=&esrc=s&source=imgres&cd=&cad=rja&uact=8&ved=0ahUKEwjuibbz3YjRAhVD4IMKHY5VCSQQjRwIBw&url=http%3A%2F%2Fgogodragons.co.uk%2F&psig=AFQjCNElr16xTnDdE6sd8_BcIs4Zs_vUdA&ust=1482528154609029',
   'https://ih0.redbubble.net/image.192105858.1609/sticker,220x200-pad,220x200,ffffff.u1.jpg',
   'http://rlv.zcache.com/sticker_vintage_rosie_the_riveter_done_it_or-rf9bbb140a200471ca4bf7f8c8e050b73_v9waf_8byvr_630.jpg?view_padding=%5B285%2C0%2C285%2C0%5D',
   'http://rlv.zcache.com/jwd_job_well_done_wash_design_classic_round_sticker-rb98e008578474834bf419553bac305bf_v9waf_8byvr_324.jpg'
@@ -52,7 +51,7 @@ const quotes = [
   '-Scott Reed'
 ];
 
-const randomize = Math.floor(Math.random()*13);
+const randomize = Math.floor(Math.random()*12);
 // console.log(images[randomize]);
 
 export class Sticker extends React.Component {
