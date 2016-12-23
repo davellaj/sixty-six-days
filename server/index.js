@@ -2,6 +2,8 @@ import 'babel-polyfill';
 import express from 'express';
 import mongoose from 'mongoose';
 import Goals from '../models/goals';
+import Stickers from '../models/stickers';
+
 import bodyParser from 'body-parser';
 
 const HOST = process.env.HOST;
@@ -126,16 +128,15 @@ app.delete('/api/home/:id', (req, res) => {
   );
 })
 
-app.get('/api/stickers', (req, res) => {
-  res.send('hi')
-  // Goals.find({})
-  // .then((goals) => {
-  //   return response.status(200).json(goals);
-  // })
-  // .catch(err => {
-  //   console.error(err);
-  //   response.status(500).json({message: 'internal server error'})
-  // })
+app.get('/api/home/stickers', (req, res) => {
+  Stickers.find({})
+  .then((stickers) => {
+    return res.status(200).json(stickers);
+  })
+  .catch(err => {
+    console.error(err);
+    res.status(500).json({message: 'internal server error'})
+  })
 })
 
 
