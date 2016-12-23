@@ -1,6 +1,5 @@
 * {
   font-family: 'Dosis', sans-serif;
-  font-size: 16px;
 }
 
 .jumbotron {
@@ -17,22 +16,32 @@
 .navBar {
   display: flex;
   justify-content: flex-end;
-  padding: 30px;
 }
 
 .navBarItem {
   padding: 10px;
 }
 
+.container {
+
+}
+
+title {
+  font-family: 'Coda Caption', sans-serif;
+}
+
+.col-sm-2 control-label {
+  text-align: left;
+  width: 100px;
+}
+
 .goalBox {
   display: flex;
   border: 1px solid grey;
   margin: 2px;
-  width: 35%;
-  height: 30%;
+  width: 50%;
   margin-left: 0;
   flex-direction: row;
-  justify-content: center;
   padding: 10px;
 }
 
@@ -64,7 +73,7 @@
   flex-wrap: wrap;
   }
 .addToCalendar {
-  font-size: 14px;
+  font-size: 12px;
 }
 
 .btn-xs {

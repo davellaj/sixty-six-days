@@ -32,15 +32,20 @@ export class Goals extends React.Component {
   render() {
     // console.log(this.props.userGoals);
     const goals = this.props.userGoals.map((goal, idx) => {
-      return <div className="goalBox" key={idx}>
+      return
+      <div>
+      <div className="goalBox" key={idx}>
         <div key={idx} className="goalText"
           onBlur={(event) => this.props.dispatch(actions.updateGoal(event.target.innerText, goal._id))}
            contentEditable='true'>{goal.goal}
          </div>
-         <button className="btn-xs btn-warning" onClick={() => {this.props.dispatch(actions.deleteGoal(goal._id))}}>
+         <button className="btn-xs btn-warning"
+           onClick={() => {this.props.dispatch(actions.deleteGoal(goal._id))}}>
           Delete</button>
+        </div>
           <Calendar goal={goal.goal}/>
-      </div>
+      
+    </div>
     })
 
     return (
