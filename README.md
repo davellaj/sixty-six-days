@@ -2,6 +2,20 @@
 
 A full stack JavaScript app that lets users log in and track their goals. As they check goals off they receive stickers and motivational quotes as a reward.
 
+![Screenshot](./client/assets/goalsScreenshot.png)
+
+
+## Technical
+
+The app is built with full-stack JavaScript. The front-end uses HTML5, CSS, React and Redux. The back-end uses NodeJS with ExpressJS as the web server and MongoDB as the database.
+
+## Development Roadmap
+
+This is v1.0 of the app, but future enhancements are expected to include:
+
+* Extending the app to allow users to pair with friends on goals and chat about their progress.
+* Extending the app to provide monetary exchanges.
+
 ## Getting started
 
 ### Setting up the project
